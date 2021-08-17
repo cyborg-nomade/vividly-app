@@ -16,13 +16,16 @@ namespace vividly_app.Controllers
             {
                 Name = "Shrek!"
             };
+
+            // DON'T
+            //ViewData["Movie"] = movie;
+            //ViewBag.Movie = movie;
+
+            //var viewResult = new ViewResult();
+            //viewResult.ViewData.Model;
+
             return View(movie);
         }
 
-        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
-        public ActionResult ByReleaseDate(int year, int month)
-        {
-            return Content(year + "/" + month);
-        }
     }
 }
