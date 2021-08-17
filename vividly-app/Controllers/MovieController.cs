@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using vividly_app.Models;
+using vividly_app.ViewModels;
 
 namespace vividly_app.Controllers
 {
@@ -16,15 +17,19 @@ namespace vividly_app.Controllers
             {
                 Name = "Shrek!"
             };
+            var customers = new List<Customer>()
+            {
+                new Customer() {Name = "Customer 1"},
+                new Customer() {Name = "Customer 2"}
+            };
 
-            // DON'T
-            //ViewData["Movie"] = movie;
-            //ViewBag.Movie = movie;
+            var viewModel = new RandomMovieViewModel()
+            {
+                Movie = movie,
+                Customers = customers
+            };
 
-            //var viewResult = new ViewResult();
-            //viewResult.ViewData.Model;
-
-            return View(movie);
+            return View(viewModel);
         }
 
     }
