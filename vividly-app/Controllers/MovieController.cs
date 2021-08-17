@@ -16,16 +16,27 @@ namespace vividly_app.Controllers
             {
                 Name = "Shrek!"
             };
-            //return View(movie);
+            return View(movie);
+        }
 
-            //return Content("Hello World!");
+        public ActionResult Edit(int id)
+        {
+            return Content("id=" + id);
+        }
 
-            //return HttpNotFound();
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+            {
+                pageIndex = 1;
+            }
 
-            //return new EmptyResult();
+            if (string.IsNullOrWhiteSpace(sortBy))
+            {
+                sortBy = "Name";
+            }
 
-            return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
-
+            return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
         }
     }
 }
