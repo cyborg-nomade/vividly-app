@@ -10,13 +10,21 @@ namespace vividly_app.Controllers
 {
     public class MovieController : Controller
     {
+        readonly List<Movie> _movies = new List<Movie>()
+        {
+            new Movie()
+            {
+                Name = "Shrek"
+            },
+            new Movie()
+            {
+                Name = "Wall-e"
+            }
+        };
+
         // GET: Movie
         public ActionResult Random()
         {
-            var movie = new Movie()
-            {
-                Name = "Shrek!"
-            };
             var customers = new List<Customer>()
             {
                 new Customer() {Name = "Customer 1"},
@@ -25,7 +33,7 @@ namespace vividly_app.Controllers
 
             var viewModel = new RandomMovieViewModel()
             {
-                Movie = movie,
+                Movie = _movies[0],
                 Customers = customers
             };
 
@@ -34,7 +42,13 @@ namespace vividly_app.Controllers
 
         public ActionResult Index()
         {
-            return View();
+
+            var moviesList = new MovieIndexViewModel()
+            {
+                Movies = _movies
+            };
+
+            return View(moviesList);
         }
     }
 }
