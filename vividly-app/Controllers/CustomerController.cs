@@ -10,38 +10,37 @@ namespace vividly_app.Controllers
 {
     public class CustomerController : Controller
     {
-        readonly List<Customer> _customers = new List<Customer>()
+        private IEnumerable<Customer> GetCustomers()
         {
-            new Customer()
+            return new List<Customer>()
             {
-                Name = "John Smith",
-                Id = 1
-            },
-            new Customer()
-            {
-                Name = "Mary Williams",
-                Id = 2
-            }
-        };
+                new Customer()
+                {
+                    Name = "John Smith",
+                    Id = 1
+                },
+                new Customer()
+                {
+                    Name = "Mary Williams",
+                    Id = 2
+                }
+            };
+        }
+
         // GET: Customer
         public ActionResult Index()
         {
 
-            var customersList = new CustomerIndexViewModel()
-            {
-                Customers = _customers
-            };
+            var customers = GetCustomers();
 
-            return View(customersList);
+            return View(customers);
         }
 
-        [Route("Customer/Details/{id}")]
-        public ActionResult CustomerDetail(int id)
+        public ActionResult Details(int id)
         {
-            var detailedCustomer = _customers.Find(c => c.Id == id);
-            Console.WriteLine(detailedCustomer);
+            var detailedCustomer = GetCustomers().SingleOrDefault(c => c.Id == id);
 
-            return View(detailedCustomer);
+            return detailedCustomer == null ? (ActionResult)HttpNotFound() : View(detailedCustomer);
         }
     }
 }
