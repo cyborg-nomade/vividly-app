@@ -174,6 +174,10 @@
     <Compile Include="Migrations\202108190112578_UpdateMembershipTableWithNames.designer.cs">
       <DependentUpon>202108190112578_UpdateMembershipTableWithNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108190128315_CorrectMembershipTableWithNames.cs" />
+    <Compile Include="Migrations\202108190128315_CorrectMembershipTableWithNames.designer.cs">
+      <DependentUpon>202108190128315_CorrectMembershipTableWithNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -295,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108190112578_UpdateMembershipTableWithNames.resx">
       <DependentUpon>202108190112578_UpdateMembershipTableWithNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190128315_CorrectMembershipTableWithNames.resx">
+      <DependentUpon>202108190128315_CorrectMembershipTableWithNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
