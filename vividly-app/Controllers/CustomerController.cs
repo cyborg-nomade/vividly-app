@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,35 +9,30 @@ namespace vividly_app.Controllers
 {
     public class CustomerController : Controller
     {
-        private IEnumerable<Customer> GetCustomers()
+        private ApplicationDbContext _context;
+
+        public CustomerController()
         {
-            return new List<Customer>()
-            {
-                new Customer()
-                {
-                    Name = "John Smith",
-                    Id = 1
-                },
-                new Customer()
-                {
-                    Name = "Mary Williams",
-                    Id = 2
-                }
-            };
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
         }
 
         // GET: Customer
         public ActionResult Index()
         {
 
-            var customers = GetCustomers();
+            var customers = _context.Customers.ToList();
 
             return View(customers);
         }
 
         public ActionResult Details(int id)
         {
-            var detailedCustomer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            var detailedCustomer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             return detailedCustomer == null ? (ActionResult)HttpNotFound() : View(detailedCustomer);
         }
