@@ -1,9 +1,7 @@
-﻿using System;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using vividly_app.Models;
-using vividly_app.ViewModels;
 
 namespace vividly_app.Controllers
 {
@@ -25,7 +23,7 @@ namespace vividly_app.Controllers
         public ActionResult Index()
         {
 
-            var customers = _context.Customers.ToList();
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
             return View(customers);
         }
