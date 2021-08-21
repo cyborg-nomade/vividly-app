@@ -34,5 +34,10 @@ namespace vividly_app.Controllers
 
             return detailedCustomer == null ? (ActionResult)HttpNotFound() : View(detailedCustomer);
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }
