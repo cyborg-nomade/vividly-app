@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using vividly_app.Models;
+using vividly_app.ViewModels;
 
 namespace vividly_app.Controllers
 {
@@ -37,7 +38,13 @@ namespace vividly_app.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var membershipTypesList = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel()
+            {
+                MembershipTypes = membershipTypesList
+            };
+
+            return View(viewModel);
         }
     }
 }
