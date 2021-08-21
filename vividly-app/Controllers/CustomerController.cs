@@ -46,5 +46,11 @@ namespace vividly_app.Controllers
 
             return View(viewModel);
         }
+
+        [HttpPost]
+        public ActionResult Create(NewCustomerViewModel viewModel)
+        {
+            return View();
+        }
     }
 }
