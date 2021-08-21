@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -44,15 +45,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -123,7 +152,65 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108182353492_InitialModel.cs" />
+    <Compile Include="Migrations\202108182353492_InitialModel.designer.cs">
+      <DependentUpon>202108182353492_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190004563_AddIsSubscribedToCustomer.cs" />
+    <Compile Include="Migrations\202108190004563_AddIsSubscribedToCustomer.designer.cs">
+      <DependentUpon>202108190004563_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190009185_AddMembershipType.cs" />
+    <Compile Include="Migrations\202108190009185_AddMembershipType.designer.cs">
+      <DependentUpon>202108190009185_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190014184_PopulateMembershipType.cs" />
+    <Compile Include="Migrations\202108190014184_PopulateMembershipType.designer.cs">
+      <DependentUpon>202108190014184_PopulateMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190025100_ApplyAnnotationsToCustomerName.cs" />
+    <Compile Include="Migrations\202108190025100_ApplyAnnotationsToCustomerName.designer.cs">
+      <DependentUpon>202108190025100_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190111122_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\202108190111122_AddNameToMembershipType.designer.cs">
+      <DependentUpon>202108190111122_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190112578_UpdateMembershipTableWithNames.cs" />
+    <Compile Include="Migrations\202108190112578_UpdateMembershipTableWithNames.designer.cs">
+      <DependentUpon>202108190112578_UpdateMembershipTableWithNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190128315_CorrectMembershipTableWithNames.cs" />
+    <Compile Include="Migrations\202108190128315_CorrectMembershipTableWithNames.designer.cs">
+      <DependentUpon>202108190128315_CorrectMembershipTableWithNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108190134135_AddBirthdayToCustomer.cs" />
+    <Compile Include="Migrations\202108190134135_AddBirthdayToCustomer.designer.cs">
+      <DependentUpon>202108190134135_AddBirthdayToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108200037041_MakeMembershipTypeNameRequired.cs" />
+    <Compile Include="Migrations\202108200037041_MakeMembershipTypeNameRequired.designer.cs">
+      <DependentUpon>202108200037041_MakeMembershipTypeNameRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108200059114_UpdateMoviesAddGenre.cs" />
+    <Compile Include="Migrations\202108200059114_UpdateMoviesAddGenre.designer.cs">
+      <DependentUpon>202108200059114_UpdateMoviesAddGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108200101136_PopulateGenre.cs" />
+    <Compile Include="Migrations\202108200101136_PopulateGenre.designer.cs">
+      <DependentUpon>202108200101136_PopulateGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108201527433_PopulateMovies.cs" />
+    <Compile Include="Migrations\202108201527433_PopulateMovies.designer.cs">
+      <DependentUpon>202108201527433_PopulateMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
@@ -210,12 +297,55 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Movie\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202108182353492_InitialModel.resx">
+      <DependentUpon>202108182353492_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190004563_AddIsSubscribedToCustomer.resx">
+      <DependentUpon>202108190004563_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190009185_AddMembershipType.resx">
+      <DependentUpon>202108190009185_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190014184_PopulateMembershipType.resx">
+      <DependentUpon>202108190014184_PopulateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190025100_ApplyAnnotationsToCustomerName.resx">
+      <DependentUpon>202108190025100_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190111122_AddNameToMembershipType.resx">
+      <DependentUpon>202108190111122_AddNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190112578_UpdateMembershipTableWithNames.resx">
+      <DependentUpon>202108190112578_UpdateMembershipTableWithNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190128315_CorrectMembershipTableWithNames.resx">
+      <DependentUpon>202108190128315_CorrectMembershipTableWithNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108190134135_AddBirthdayToCustomer.resx">
+      <DependentUpon>202108190134135_AddBirthdayToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108200037041_MakeMembershipTypeNameRequired.resx">
+      <DependentUpon>202108200037041_MakeMembershipTypeNameRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108200059114_UpdateMoviesAddGenre.resx">
+      <DependentUpon>202108200059114_UpdateMoviesAddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108200101136_PopulateGenre.resx">
+      <DependentUpon>202108200101136_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108201527433_PopulateMovies.resx">
+      <DependentUpon>202108201527433_PopulateMovies.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -251,7 +381,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

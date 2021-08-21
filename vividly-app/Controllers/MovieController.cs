@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,13 +11,31 @@ namespace vividly_app.Controllers
 {
     public class MovieController : Controller
     {
-        private IEnumerable<Movie> GetMovies()
+        private ApplicationDbContext _context;
+
+        public MovieController()
         {
-            return new List<Movie>
-            {
-                new Movie { Id = 1, Name = "Shrek" },
-                new Movie { Id = 2, Name = "Wall-e" }
-            };
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        public ViewResult Index()
+        {
+
+            var moviesList = _context.Movies.Include(m => m.Genre).ToList();
+
+            return View(moviesList);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var detailedMovie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+
+            return detailedMovie == null ? (ActionResult)HttpNotFound() : View(detailedMovie);
         }
 
         // GET: Movie
@@ -36,14 +55,6 @@ namespace vividly_app.Controllers
             };
 
             return View(viewModel);
-        }
-
-        public ActionResult Index()
-        {
-
-            var moviesList = GetMovies();
-
-            return View(moviesList);
         }
     }
 }
