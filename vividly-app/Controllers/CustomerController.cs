@@ -39,12 +39,12 @@ namespace vividly_app.Controllers
         public ActionResult New()
         {
             var membershipTypesList = _context.MembershipTypes.ToList();
-            var viewModel = new NewCustomerViewModel()
+            var viewModel = new CustomerFormViewModel()
             {
                 MembershipTypes = membershipTypesList
             };
 
-            return View(viewModel);
+            return View("CustomerForm", viewModel);
         }
 
         [HttpPost]
@@ -54,6 +54,19 @@ namespace vividly_app.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Customer");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            var viewModel = new CustomerFormViewModel()
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return customer == null ? (ActionResult)HttpNotFound() : View("CustomerForm", viewModel);
         }
     }
 }
