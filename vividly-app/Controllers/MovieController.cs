@@ -38,6 +38,68 @@ namespace vividly_app.Controllers
             return detailedMovie == null ? (ActionResult)HttpNotFound() : View(detailedMovie);
         }
 
+        public ActionResult New()
+        {
+            var genresList = _context.Genres.ToList();
+            var viewModel = new MovieFormViewModel()
+            {
+                Genres = genresList
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+
+                movieInDb.Name = movie.Name;
+                movieInDb.Genre = movie.Genre;
+                movieInDb.ReleaseDate = movieInDb.ReleaseDate;
+                movieInDb.NumberInStock = movieInDb.NumberInStock;
+                movieInDb.DateAdded = movie.DateAdded;
+            }
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movie");
+        }
+
+        /*
+         * public ActionResult Edit(int id)
+                {
+                    var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+                    var viewModel = new CustomerFormViewModel()
+                    {
+                        Customer = customer,
+                        MembershipTypes = _context.MembershipTypes.ToList()
+                    };
+
+                    return customer == null ? (ActionResult)HttpNotFound() : View("CustomerForm", viewModel);
+                }
+         */
+
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+
+            var viewModel = new MovieFormViewModel()
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
+            };
+
+            return movie == null ? (ActionResult)HttpNotFound() : View("MovieForm", viewModel);
+        }
+
         // GET: Movie
         public ActionResult Random()
         {
