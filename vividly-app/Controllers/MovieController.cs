@@ -62,8 +62,8 @@ namespace vividly_app.Controllers
 
                 movieInDb.Name = movie.Name;
                 movieInDb.Genre = movie.Genre;
-                movieInDb.ReleaseDate = movieInDb.ReleaseDate;
-                movieInDb.NumberInStock = movieInDb.NumberInStock;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.NumberInStock = movie.NumberInStock;
                 movieInDb.DateAdded = movie.DateAdded;
             }
 

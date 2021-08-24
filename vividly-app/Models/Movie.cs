@@ -14,8 +14,11 @@ namespace vividly_app.Models
         public string Name { get; set; }
         [Required]
         public Genre Genre { get; set; }
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Date Added")]
         public DateTime DateAdded { get; set; }
+        [Display(Name = "Number in Stock")]
         public short NumberInStock { get; set; }
     }
 }
