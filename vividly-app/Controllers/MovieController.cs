@@ -72,20 +72,6 @@ namespace vividly_app.Controllers
             return RedirectToAction("Index", "Movie");
         }
 
-        /*
-         * public ActionResult Edit(int id)
-                {
-                    var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
-
-                    var viewModel = new CustomerFormViewModel()
-                    {
-                        Customer = customer,
-                        MembershipTypes = _context.MembershipTypes.ToList()
-                    };
-
-                    return customer == null ? (ActionResult)HttpNotFound() : View("CustomerForm", viewModel);
-                }
-         */
 
         public ActionResult Edit(int id)
         {
