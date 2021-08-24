@@ -54,6 +54,7 @@ namespace vividly_app.Controllers
         {
             if (movie.Id == 0)
             {
+                movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
             }
             else
@@ -64,7 +65,6 @@ namespace vividly_app.Controllers
                 movieInDb.Genre = movie.Genre;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.NumberInStock = movie.NumberInStock;
-                movieInDb.DateAdded = movie.DateAdded;
             }
 
             _context.SaveChanges();
