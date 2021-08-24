@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -67,7 +68,9 @@ namespace vividly_app.Controllers
                 movieInDb.NumberInStock = movie.NumberInStock;
             }
 
+
             _context.SaveChanges();
+
 
             return RedirectToAction("Index", "Movie");
         }
