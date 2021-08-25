@@ -45,7 +45,6 @@ namespace vividly_app.Controllers
             var genresList = _context.Genres.ToList();
             var viewModel = new MovieFormViewModel()
             {
-                Movie = new Movie(),
                 Genres = genresList
             };
 
@@ -58,9 +57,8 @@ namespace vividly_app.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new MovieFormViewModel()
+                var viewModel = new MovieFormViewModel(movie)
                 {
-                    Movie = movie,
                     Genres = _context.Genres.ToList()
                 };
 
@@ -77,7 +75,7 @@ namespace vividly_app.Controllers
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
 
                 movieInDb.Name = movie.Name;
-                movieInDb.Genre = movie.Genre;
+                movieInDb.GenreId = movie.GenreId;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.NumberInStock = movie.NumberInStock;
             }
@@ -94,9 +92,8 @@ namespace vividly_app.Controllers
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
 
-            var viewModel = new MovieFormViewModel()
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = _context.Genres.ToList()
             };
 
