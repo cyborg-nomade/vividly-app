@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
+using System.Web.Management;
 using System.Web.Mvc;
 using vividly_app.Models;
 using vividly_app.ViewModels;
@@ -44,6 +45,7 @@ namespace vividly_app.Controllers
             var genresList = _context.Genres.ToList();
             var viewModel = new MovieFormViewModel()
             {
+                Movie = new Movie(),
                 Genres = genresList
             };
 
@@ -51,8 +53,20 @@ namespace vividly_app.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel()
+                {
+                    Movie = movie,
+                    Genres = _context.Genres.ToList()
+                };
+
+                return View("MovieForm", viewModel);
+            }
+
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
