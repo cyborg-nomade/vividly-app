@@ -43,6 +43,7 @@ namespace vividly_app.Controllers
             var membershipTypesList = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel()
             {
+                Customer = new Customer(),
                 MembershipTypes = membershipTypesList
             };
 
