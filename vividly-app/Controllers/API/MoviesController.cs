@@ -52,6 +52,7 @@ namespace vividly_app.Controllers.API
         }
 
         // PUT /api/movies/1
+        [HttpPut]
         public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -72,6 +73,7 @@ namespace vividly_app.Controllers.API
         }
 
         // DELETE /api/movies/1
+        [HttpDelete]
         public void DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
