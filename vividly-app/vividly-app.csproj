@@ -16,7 +16,7 @@
     <AssemblyName>vividly-app</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44386</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
@@ -307,6 +307,8 @@
     <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
     <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap5.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap5.min.css" />
     <Content Include="Content\DataTables\css\dataTables.foundation.css" />
     <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
     <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
@@ -424,7 +426,10 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootbox.all.js" />
@@ -464,6 +469,11 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -499,6 +509,8 @@
     <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
     <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap5.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap5.min.js" />
     <Content Include="Scripts\DataTables\dataTables.buttons.js" />
     <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
     <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
