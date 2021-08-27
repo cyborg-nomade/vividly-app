@@ -27,10 +27,7 @@ namespace vividly_app.Controllers
 
         public ViewResult Index()
         {
-
-            var moviesList = _context.Movies.Include(m => m.Genre).ToList();
-
-            return View(moviesList);
+            return View();
         }
 
         public ActionResult Details(int id)
