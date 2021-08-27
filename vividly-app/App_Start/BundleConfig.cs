@@ -20,7 +20,8 @@ namespace vividly_app
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.bundle.js"));
+                      "~/Scripts/bootstrap.bundle.js",
+                      "~/Scripts/bootbox.all.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap5-lumen.css",
