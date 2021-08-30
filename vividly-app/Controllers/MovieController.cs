@@ -27,7 +27,15 @@ namespace vividly_app.Controllers
 
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                return View("List");
+            }
+            else
+            {
+                return View("ReadOnlyList");
+            }
+
         }
 
         public ActionResult Details(int id)
@@ -37,6 +45,7 @@ namespace vividly_app.Controllers
             return detailedMovie == null ? (ActionResult)HttpNotFound() : View(detailedMovie);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var genresList = _context.Genres.ToList();
@@ -50,6 +59,7 @@ namespace vividly_app.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Movie movie)
         {
             if (!ModelState.IsValid)
@@ -84,7 +94,7 @@ namespace vividly_app.Controllers
             return RedirectToAction("Index", "Movie");
         }
 
-
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
