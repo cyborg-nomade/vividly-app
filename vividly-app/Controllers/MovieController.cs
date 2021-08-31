@@ -107,7 +107,7 @@ namespace vividly_app.Controllers
             return movie == null ? (ActionResult)HttpNotFound() : View("MovieForm", viewModel);
         }
 
-        // GET: Movie
+        // GET: Movie/Random
         public ActionResult Random()
         {
             var movie = new Movie { Id = 1, Name = "Shrek" };
