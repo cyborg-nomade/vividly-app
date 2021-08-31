@@ -23,5 +23,10 @@ namespace vividly_app.ViewModels
         [Required]
         [Display(Name = "Driving License")]
         public string DrivingLicense { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 }
