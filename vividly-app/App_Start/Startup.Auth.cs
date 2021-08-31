@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using vividly_app.Models;
 
@@ -50,18 +51,18 @@ namespace vividly_app
             //    clientSecret: "");
 
             //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            //   consumerKey: "PJvMCLnkqB6jLAxLSDqVAqsEu",
+            //   consumerSecret: "7NWJpnLzthS2WaylZjiKmdEgktKSs0eqqUEZq2eVp9pQwWh2po");
 
             //app.UseFacebookAuthentication(
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "656596276584-2fvl1i674ek4trnruvj74kich520ju7q.apps.googleusercontent.com",
+                ClientSecret = "8mTL13ZvicyEng9xQYvg6oHB"
+            });
         }
     }
 }
