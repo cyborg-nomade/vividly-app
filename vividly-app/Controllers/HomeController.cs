@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace vividly_app.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
