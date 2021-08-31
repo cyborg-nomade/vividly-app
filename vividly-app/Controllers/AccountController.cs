@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using vividly_app.Models;
+using vividly_app.ViewModels;
 
 namespace vividly_app.Controllers
 {
