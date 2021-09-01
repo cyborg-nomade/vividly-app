@@ -13,6 +13,11 @@ namespace vividly_app.Controllers.API
     {
         private ApplicationDbContext _context;
 
+        public RentalsController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // POST /api/rentals
         [HttpPost]
         //[Authorize(Roles = RoleName.CanManageMovies)]
@@ -29,6 +34,8 @@ namespace vividly_app.Controllers.API
 
             foreach (var movie in movies)
             {
+                movie.NumberAvailable--;
+
                 var rental = new Rental
                 {
                     Customer = customer,
@@ -42,11 +49,6 @@ namespace vividly_app.Controllers.API
             _context.SaveChanges();
 
             return Ok();
-        }
-
-        public RentalsController()
-        {
-            _context = new ApplicationDbContext();
         }
 
         // GET /api/rentals

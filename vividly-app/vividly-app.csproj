@@ -293,6 +293,10 @@
     <Compile Include="Migrations\202109012321393_CorrectMovieFieldInRental.designer.cs">
       <DependentUpon>202109012321393_CorrectMovieFieldInRental.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109012340174_AddNumberAvailableToMovie.cs" />
+    <Compile Include="Migrations\202109012340174_AddNumberAvailableToMovie.designer.cs">
+      <DependentUpon>202109012340174_AddNumberAvailableToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Rental.cs" />
@@ -753,6 +757,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109012321393_CorrectMovieFieldInRental.resx">
       <DependentUpon>202109012321393_CorrectMovieFieldInRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109012340174_AddNumberAvailableToMovie.resx">
+      <DependentUpon>202109012340174_AddNumberAvailableToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
