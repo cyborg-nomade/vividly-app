@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
@@ -12,45 +13,69 @@ namespace vividly_app.Controllers.API
     {
         private ApplicationDbContext _context;
 
+        // POST /api/rentals
+        [HttpPost]
+        //[Authorize(Roles = RoleName.CanManageMovies)]
+        public IHttpActionResult CreateRental(RentalDto rentalDto)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest();
+            //}
+
+            var customer = _context.Customers.Single(c => c.Id == rentalDto.CustomerId);
+
+            var movies = _context.Movies.Where(m => rentalDto.MovieIds.Contains(m.Id));
+
+            foreach (var movie in movies)
+            {
+                var rental = new Rental
+                {
+                    Customer = customer,
+                    Movie = movie,
+                    DateRented = DateTime.Now
+                };
+
+                _context.Rentals.Add(rental);
+            }
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
         public RentalsController()
         {
             _context = new ApplicationDbContext();
         }
 
         // GET /api/rentals
-        public IHttpActionResult GetRentals()
-        {
-            return Ok();
-        }
+        //public IHttpActionResult GetRentals()
+        //{
+        //    return Ok();
+        //}
+
 
         // GET /api/rentals/1
-        public IHttpActionResult GetRental(int id)
-        {
-            return Ok();
-        }
-
-        // POST /api/rentals
-        [HttpPost]
-        //[Authorize(Roles = RoleName.CanManageMovies)]
-        public IHttpActionResult CreateRental(RentalDto rentalDto)
-        {
-            return Ok();
-        }
+        //public IHttpActionResult GetRental(int id)
+        //{
+        //    return Ok();
+        //}
 
         // PUT /api/rentals/1
-        [HttpPut]
+        //[HttpPut]
         //[Authorize(Roles = RoleName.CanManageMovies)]
-        public IHttpActionResult UpdateRental(int id, RentalDto rentalDto)
-        {
-            return Ok();
-        }
+        //public IHttpActionResult UpdateRental(int id, RentalDto rentalDto)
+        //{
+        //    return Ok();
+        //}
 
         // DELETE /api/rentals/1
-        [HttpDelete]
+        //[HttpDelete]
         //[Authorize(Roles = RoleName.CanManageMovies)]
-        public IHttpActionResult DeleteRental(int id)
-        {
-            return Ok();
-        }
+        //public IHttpActionResult DeleteRental(int id)
+        //{
+        //    return Ok();
+        //}
     }
 }
