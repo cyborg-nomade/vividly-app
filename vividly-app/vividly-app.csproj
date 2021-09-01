@@ -285,8 +285,13 @@
     <Compile Include="Migrations\202108301958517_AddDrivingLicenseToApplicationUser.designer.cs">
       <DependentUpon>202108301958517_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109012244365_AddRentalToModel.cs" />
+    <Compile Include="Migrations\202109012244365_AddRentalToModel.designer.cs">
+      <DependentUpon>202109012244365_AddRentalToModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\FactorViewModel.cs" />
@@ -738,6 +743,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202108301958517_AddDrivingLicenseToApplicationUser.resx">
       <DependentUpon>202108301958517_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109012244365_AddRentalToModel.resx">
+      <DependentUpon>202109012244365_AddRentalToModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
