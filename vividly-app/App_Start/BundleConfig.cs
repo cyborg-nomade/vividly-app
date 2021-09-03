@@ -13,7 +13,8 @@ namespace vividly_app
                         "~/Scripts/bootstrap.bundle.js",
                         "~/Scripts/bootbox.all.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap5.js"
+                        "~/Scripts/DataTables/dataTables.bootstrap5.js",
+                        "~/Scripts/typeahead.bundle.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,6 +28,7 @@ namespace vividly_app
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap5-lumen.css",
                       "~/Content/DataTables/css/dataTables.bootstrap5.css",
+                      "~/Content/typeahead.css",
                       "~/Content/Site.css"));
         }
     }
